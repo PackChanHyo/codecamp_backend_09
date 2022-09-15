@@ -3,7 +3,7 @@
  * /starbucks:
  *      get:
  *          summary : 커피메뉴 리스트 가져오기
- *          tags: [Board]
+ *          tags: [starbucks]
  *          parmeters:
  *              - in:query
  *                  name:number

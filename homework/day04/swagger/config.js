@@ -2,7 +2,7 @@ export const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Starbucks",
+      title: "커피메뉴 회원목록",
       version: "1.0.0",
     },
   },

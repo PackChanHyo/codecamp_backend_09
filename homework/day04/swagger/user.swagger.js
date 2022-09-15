@@ -3,7 +3,7 @@
  *  /users:
  *      get:
  *          summary : 회원목록 가져오기
- *          tags: [Boards]
+ *          tags: [Users]
  *          parmeters:
  *              - in:query
  *                  name:number
