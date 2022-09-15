@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+Disallow: /inbox
+Disallow: /inboxes
+Disallow: /track
+Disallow: /manager
+
+Sitemap: https://kmong.com/sitemap/image_sitemapindex.xml
+Sitemap: https://kmong.com/sitemap/portfolio_image_sitemapindex.xml
+Sitemap: https://kmong.com/sitemap/top_nav.xml
+Sitemap: https://kmong.com/sitemap/gig_sitemapindex.xml
+Sitemap: https://kmong.com/sitemap/category_sitemapindex.xml
+Sitemap: https://kmong.com/sitemap/user_sitemapindex.xml
+Sitemap: https://kmong.com/sitemap/search_sitemapindex.xml
+Sitemap: https://kmong.com/sitemap/portfolio_sitemapindex.xml
