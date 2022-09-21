@@ -1,0 +1,79 @@
+show databases
+;
+use myproject09
+;
+show tables
+;
+
+desc product 
+;
+
+select * 
+from product
+;
+// 상품 생성
+insert into product(id, name, description, price, isSoldout)
+	values(uuid(),"마우스","정말 좋은 마우스입니다!!",15000,false)
+;
+
+insert into product(id, name, description, price, isSoldout)
+	values(uuid(),"노트북","최신 맥북",20000,false)
+;
+
+insert into product(id, name, description, price, isSoldout)
+	values(uuid(),"셔츠","깔끔한 셔츠입니다." ,30000,false)
+;
+// 삭제 명령어
+delete from product 
+ where name = "셔츠"
+ ;
+ 
+select *
+ from product_saleslocation
+ ;
+ 
+
+insert into product_saleslocation(id, address,adressDetail,lat,lng,meetingTimeL)
+	values(uuid(),"구로구","구로디지털단지", 37.281723,127.192387,"2022-12-31")
+;
+
+// 가격
+update product 
+	set price = 18000
+ where name = "마우스"
+ ;
+
+
+update product 
+	set productSaleslocationID = "02921abc-3985-11ed-942b-637b3fc82e8f"
+ where name ="마우스"
+ ;
+ 
+select name, price
+ from product
+ ;
+ 
+ // 같은 Id값 가져올때 사용한다.
+select p.id, name, price, address, adressDetail as "상세주"
+ from product p, product_saleslocation ps
+ where p.productSaleslocationId = ps.id 
+ ;
+ 
+# 추가기능들 - 1
+update product 
+	set isSoldout = true
+ where name = "노트북"
+ 	and price = 20000
+;
+# 추가기능들 - 2
+update product 
+	set price = 5000
+ where name = "노트북"
+ 	or name = "키보드"
+;
+# 추가 기능들 - 3 (update/delete 에서는 가급적 사용하지 않기)
+select *
+from product
+where price = 5000 
+ and location = '구로'
+ and isSoldout  = false
