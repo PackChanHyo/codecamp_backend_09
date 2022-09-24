@@ -1,0 +1,73 @@
+<!-- `http://numbersapi.com/random?min=1&max=200` -->
+<!-- `http://koreanjson.com/posts/${num}` -->
+<!-- `http://koreanjson.com/posts?userId=${userId}` -->
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Callback과 친구들</title>
+        <script>
+            function myCallback() {
+                const aaa = new XMLHttpRequest();
+                aa.open("get", `http://numbersapi.com/random?min=1&max=200`);
+                aa.send();
+                aa.addEvertListerer("load", (res) => {
+                    console.log(res);
+                    const num = res.target.respobse.split(" ")[0];
+
+                    const bb = new XMLHttpRequest();
+                    bb.open("get"` http://koreanjson.com/posts/${num}`);
+                    bb.send();
+                    bb.addEvertListerer("load", (res) => {
+                        const userId = JSON.parse(res.target.respobse).UserId;
+                    });
+
+                    const cc = new XMLHttpRequest();
+                    cc.open(
+                        "get",
+                        `http://koreanjson.com/posts?userId=${userId}`
+                    );
+                    cc.send();
+                    cc.addEventListener("load", (res) => {
+                        console.log(res);
+                    });
+                });
+            }
+
+            new Promise(() => {})
+                .then(() => {
+                    console.log("성공했습니다.!!");
+                })
+                .catch(() => {
+                    console.log("실패했습니다!!");
+                });
+
+            function myPromise() {
+                axios.get("1번째 주소").then((res) => {
+                    //
+                    return axios
+                        .get("2번째 주소") //
+                        .then((res) => {
+                            //
+                            return axios.get("3번째 주소"); //
+                        }); //
+                });
+            }
+            fetch();
+            // axios, fetch, emd => 대표적인 Promise (.then 등의 기능) 를 지원하는 기능
+            // axios, fetch 등을 기다리는 2가지 방법
+            // 1) .then() 활용
+            // 2) await 활용
+            async function myAsyncAwait() {
+                axios.get("http://numbersapi.com/random?min=1&max=200");
+                axios.get("http://numbersapi.com/random?min=1&max=200");
+                axios.get("http://numbersapi.com/random?min=1&max=200");
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="myCallback()">Callback 연습하기</button>
+        <button onclick="myPromise()">Promise 연습하기</button>
+        <button onclick="myAsyncAwait()">Async/await 연습하기</button>
+    </body>
+</html>
