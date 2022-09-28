@@ -1,0 +1,117 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProductCategory {
+  id: String!
+  name: String!
+}
+
+type ProductLocal {
+  id: String!
+  local: String!
+  meetingTime: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: String!
+  name: String!
+  phone: String!
+  email: String!
+  emailsign: Boolean!
+  date: DateTime
+  memberSince: DateTime
+  point: String
+  online: String
+  personal: String!
+  membership: String
+  deletedAt: DateTime
+}
+
+type Product {
+  id: String!
+  name: String!
+  description: String!
+  price: Int!
+  sale: Boolean!
+  productsCategory: ProductCategory!
+  productsTags: [ProductsTag!]!
+  productLocal: ProductLocal!
+}
+
+type ProductsTag {
+  id: String!
+  name: String!
+  products: [Product!]!
+}
+
+type Query {
+  fetchProducts: [Product!]!
+  fetchProduct(productId: String!): Product!
+  fetchProductWithDeleted: [Product!]!
+  fetchUsers: [User!]!
+  fetchUser(email: String!): User!
+  fetchLoginUser: User!
+}
+
+type Mutation {
+  login(email: String!, pwd: String!): String!
+  createProduct(createProductInput: CreateProductInput): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(productId: String!): Boolean!
+  restoreProduct(productId: String!): Boolean!
+  createProductCategory(productCategoryId: String!): ProductCategory!
+  createUser(userInput: UserInput): User!
+  updateUserPwd(pwd: String!): Boolean!
+  deleteLoginUser: Boolean!
+  updateUser(userId: String!, updateUserInput: UpdateUserInput!): User!
+  deleteUser(email: String!): Boolean!
+}
+
+input CreateProductInput {
+  name: String!
+  description: String!
+  price: Int!
+  productLocal: ProductLocalInput!
+  productCategory: ProductCategoryInput!
+  productTags: [String!]!
+}
+
+input ProductLocalInput {
+  local: String!
+  meetingTime: DateTime!
+}
+
+input ProductCategoryInput {
+  id: String!
+}
+
+input UpdateProductInput {
+  name: String
+  description: String
+  price: Int
+  productLocal: ProductLocalInput
+  productCategory: ProductCategoryInput
+  productTags: [String!]
+}
+
+input UserInput {
+  name: String!
+  pwd: String!
+  phone: String!
+  personal: String!
+  email: String!
+}
+
+input UpdateUserInput {
+  name: String
+  pwd: String
+  phone: String
+  personal: String
+  email: String
+}
