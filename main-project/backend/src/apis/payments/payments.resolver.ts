@@ -1,6 +1,5 @@
 import {
   ConflictException,
-  Get,
   UnprocessableEntityException,
   UseGuards,
 } from '@nestjs/common';
@@ -26,16 +25,13 @@ export class PayMentsResolver {
   ) {
     const user = context.req.user;
     console.log(impUid, amount);
-    // 결제 정보 가져오기
     const paymentInfo: any = await this.IamPortsService.getPaymentData({
       impUid,
     });
     console.log(paymentInfo);
-    // 만약 결제정보가 없다면 오류 던지기
     if (paymentInfo == null) {
       throw new UnprocessableEntityException('결제 정보가 존재하지 않습니다');
     }
-    // 만약 받아온 결제정보에 금액이 서로 같지 않다면 오류 보내기, 같다면 아이디를 찾고 디비에 저장
     if (paymentInfo.data.response.amount === amount) {
       const result = await this.paymentsService.findPaymentById({ impUid });
       if (result != null)
@@ -53,9 +49,7 @@ export class PayMentsResolver {
     @Context() context: IContext,
   ) {
     const user = context.req.user;
-    // 토큰 받아오기
     const access_token = await this.IamPortsService.createIamPortToken();
-    // 검증 후 환불 완료 처리하기
     return await this.paymentsService.refund({
       impUid,
       access_token,
