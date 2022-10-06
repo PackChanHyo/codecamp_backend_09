@@ -13,6 +13,7 @@ export class AuthResolver {
     private readonly authService: AuthService,
     private readonly usersService: UsersService,
   ) {}
+
   @Mutation(() => String)
   async login(
     @Args('email') email: string, //
@@ -20,10 +21,15 @@ export class AuthResolver {
     @Context() context: IContext,
   ) {
     const user = await this.usersService.findOne({ email });
+    //
     if (!user) throw new UnprocessableEntityException('이메일이 없습니다.');
+    //
     const isAuth = await bcrypt.compare(pwd, user.pwd);
+    //
     if (!isAuth) throw new UnprocessableEntityException('암호가 틀렸습니다.');
+    //
     this.authService.setRefreshToken({ user, res: context.res });
+    //
     return this.authService.getAccessToken({ user });
   }
 

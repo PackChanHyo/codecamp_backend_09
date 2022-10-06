@@ -34,9 +34,7 @@ export class UsersResolver {
     @Args({ name: 'userInput', nullable: true })
     userInput: UserInput,
   ) {
-    const hashedPassword = await bcrypt.hash(userInput.pwd, 10);
-    console.log(hashedPassword);
-    return this.usersService.create({ userInput, hashedPassword });
+    return this.usersService.create({ userInput });
   }
 
   @UseGuards(GqlAuthAccessGuard)

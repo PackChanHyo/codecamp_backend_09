@@ -7,10 +7,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ProductsCategoriesModule } from './apis/productsCategories/productCategories.module';
 import { UsersModule } from './apis/users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { PayMentsModule } from './apis/payments/payments.module';
 @Module({
   imports: [
     AuthModule,
     ProductsModule,
+    PayMentsModule,
     ProductsCategoriesModule,
     UsersModule,
     ConfigModule.forRoot(),

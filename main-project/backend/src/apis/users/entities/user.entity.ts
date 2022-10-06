@@ -25,7 +25,7 @@ export class User {
   @Field(() => String)
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   @Field(() => String)
   email: string;
 
@@ -42,14 +42,14 @@ export class User {
   memberSince: Date;
 
   @Column({ nullable: true })
-  @Field(() => String, { nullable: true })
-  point: string;
+  @Field(() => Number, { nullable: true })
+  point: number;
 
   @Column({ nullable: true })
   @Field(() => String, { nullable: true })
   online: string;
 
-  @Column()
+  @Column({ nullable: true })
   @Field(() => String)
   personal: string;
 

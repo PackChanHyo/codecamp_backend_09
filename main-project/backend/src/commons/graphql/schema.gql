@@ -26,7 +26,7 @@ type User {
   emailsign: Boolean!
   date: DateTime
   memberSince: DateTime
-  point: String
+  point: Float
   online: String
   personal: String!
   membership: String
@@ -50,6 +50,24 @@ type ProductsTag {
   products: [Product!]!
 }
 
+type Payment {
+  id: String!
+  paymentName: String
+  paymentDate: DateTime
+  impUid: String!
+  amount: Int!
+  pay_time: DateTime
+  status: POINT_TRANSACTION_STATUS_ENUM!
+  payment_Canceled: Boolean
+  user: User
+  createdAt: DateTime!
+}
+
+enum POINT_TRANSACTION_STATUS_ENUM {
+  PAYMENT
+  CANCEL
+}
+
 type Query {
   fetchProducts: [Product!]!
   fetchProduct(productId: String!): Product!
@@ -66,6 +84,8 @@ type Mutation {
   updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
   deleteProduct(productId: String!): Boolean!
   restoreProduct(productId: String!): Boolean!
+  createPayment(impUid: String!, amount: Int!): Payment!
+  cancelPayment(impUid: String!): Payment!
   createProductCategory(productCategoryId: String!): ProductCategory!
   createUser(userInput: UserInput): User!
   updateUserPwd(pwd: String!): Boolean!

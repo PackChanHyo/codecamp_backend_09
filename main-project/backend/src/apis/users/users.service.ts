@@ -25,7 +25,7 @@ export class UsersService {
     });
   }
 
-  async create({ userInput, hashedPassword: pwd }) {
+  async create({ userInput }) {
     const { ...user } = userInput;
     const userEmail = userInput.email;
     const hashedPassword = await bcrypt.hash(userInput.pwd, 10);

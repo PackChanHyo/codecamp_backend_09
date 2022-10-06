@@ -1,9 +1,7 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Request, Response } from 'express';
-import { UserInput } from 'src/apis/users/dto/productUser.input';
 import { User } from 'src/apis/users/entities/user.entity';
-import { UsersService } from 'src/apis/users/users.service';
 import { AuthService } from './auth.service';
 
 // interface IOAuthUser {
@@ -20,38 +18,32 @@ interface IOAuthUser {
 
 @Controller()
 export class AuthController {
-  constructor(
-    private readonly userService: UsersService,
-    private readonly authService: AuthService,
-  ) {}
+  constructor(private readonly authService: AuthService) {}
+
   @Get('/login/google')
   @UseGuards(AuthGuard('google'))
   async loginGoogle(
     @Req() req: Request & IOAuthUser, //
     @Res() res: Response,
   ) {
-    // 1. 회원 조회
-    let user = await this.userService.findOne({ email: req.user.email });
+    this.authService.mySocialLogin({ req, res });
+  }
 
-    // 2. 회원가입이 안되어있다면? 자동 회원가입
-    if (!user) {
-      const newUser: UserInput = {
-        name: req.user.name,
-        phone: req.user.phone,
-        email: req.user.email,
-        personal: req.user.personal,
-        pwd: req.user.pwd,
-      };
-      user = await this.userService.create({
-        userInput: newUser,
-        hashedPassword: req.user.pwd,
-      });
-    }
+  @Get('/login/naver')
+  @UseGuards(AuthGuard('naver'))
+  async loginNaver(
+    @Req() req: Request & IOAuthUser, //
+    @Res() res: Response,
+  ) {
+    this.authService.mySocialLogin({ req, res });
+  }
 
-    // 3. 회원가입이 되어있다면? 로그인(refreshToken, accessToken 만들어서 프론트엔드에 주기)
-    this.authService.setRefreshToken({ user, res });
-    res.redirect(
-      'http://localhost:5500/main-project/frontend/login/index.html',
-    );
+  @Get('/login/kakao')
+  @UseGuards(AuthGuard('kakao'))
+  async loginKakao(
+    @Req() req: Request & IOAuthUser, //
+    @Res() res: Response,
+  ) {
+    this.authService.mySocialLogin({ req, res });
   }
 }

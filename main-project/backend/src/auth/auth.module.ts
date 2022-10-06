@@ -5,6 +5,8 @@ import { User } from 'src/apis/users/entities/user.entity';
 import { UsersService } from 'src/apis/users/users.service';
 import { JwtRefreshStrategy } from 'src/commons/auth/jwt-refresh.strategy';
 import { JwtGoogleStrategy } from 'src/commons/auth/jwt-social-google';
+import { JwtKakaoStrategy } from 'src/commons/auth/jwt-social-kakao';
+import { JwtNaverStrategy } from 'src/commons/auth/jwt-social-naver';
 import { AuthController } from './auth.controller';
 import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
@@ -14,6 +16,8 @@ import { AuthService } from './auth.service';
   providers: [
     JwtRefreshStrategy,
     JwtGoogleStrategy,
+    JwtNaverStrategy,
+    JwtKakaoStrategy,
     AuthResolver,
     AuthService,
     UsersService,

@@ -1323,6 +1323,22 @@
     "@types/jsonwebtoken" "*"
     "@types/passport-strategy" "*"
 
+"@types/passport-kakao@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/passport-kakao/-/passport-kakao-1.0.0.tgz#28bdacedda98c6a5a5cffa25f3f5f68e205cba45"
+  integrity sha512-wxBJdc4ThRTPrCN3JvnwnV+6PJJjso2WjcWuAgIghZtLmK8F/qfgAIKtWKeDoRYTPbZ0MSsjuCQhlXmDqrNicA==
+  dependencies:
+    "@types/express" "*"
+    "@types/passport" "*"
+
+"@types/passport-naver@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/passport-naver/-/passport-naver-1.0.1.tgz#dd6588c29fdd8c488ccfe91604878b23d768edc0"
+  integrity sha512-MO5UFt7ZtyD7eH8AoyQHjq8Q+dbn114FItt3H8V2XPx/C5TJwjQrp+6opU4X7uiBjEpBLT2ANUvQuRAq8i+aZg==
+  dependencies:
+    "@types/express" "*"
+    "@types/passport" "*"
+
 "@types/passport-strategy@*":
   version "0.2.35"
   resolved "https://registry.yarnpkg.com/@types/passport-strategy/-/passport-strategy-0.2.35.tgz#e52f5212279ea73f02d9b06af67efe9cefce2d0c"
@@ -1880,6 +1896,14 @@ asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
+
+axios@0.27.2:
+  version "0.27.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
+  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
+  dependencies:
+    follow-redirects "^1.14.9"
+    form-data "^4.0.0"
 
 babel-jest@^28.1.3:
   version "28.1.3"
@@ -2512,6 +2536,13 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+dotenv-config@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/dotenv-config/-/dotenv-config-0.1.1.tgz#98bf1b57776c629e9cf37cf8d0e8d8508bc55271"
+  integrity sha512-qQESp1ddxhI7Jwmpvf2WFfj0eEG6wa95snrUurUYEPjQ2FIs066EwrPMgB2PwIATNfPQAV6NLC/JX72utTf66A==
+  dependencies:
+    dotenv "~8.0.0"
+
 dotenv-expand@8.0.3:
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-8.0.3.tgz#29016757455bcc748469c83a19b36aaf2b83dd6e"
@@ -2526,6 +2557,16 @@ dotenv@^16.0.0:
   version "16.0.2"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.2.tgz#0b0f8652c016a3858ef795024508cddc4bffc5bf"
   integrity sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==
+
+dotenv@^16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+
+dotenv@~8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.0.0.tgz#ed310c165b4e8a97bb745b0a9d99c31bda566440"
+  integrity sha512-30xVGqjLjiUOArT4+M5q9sYdvuR4riM6yK9wMcas9Vbp6zZa+ocC9dp6QoftuhTPhFAiLK/0C5Ni2nou/Bk8lg==
 
 ecdsa-sig-formatter@1.0.11:
   version "1.0.11"
@@ -2963,6 +3004,11 @@ flatted@^3.1.0:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
+
+follow-redirects@^1.14.9:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
+  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
 
 fork-ts-checker-webpack-plugin@7.2.13:
   version "7.2.13"
@@ -4559,7 +4605,30 @@ passport-jwt@^4.0.0:
     jsonwebtoken "^8.2.0"
     passport-strategy "^1.0.0"
 
-passport-oauth2@1.x.x:
+passport-kakao-oauth2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/passport-kakao-oauth2/-/passport-kakao-oauth2-1.0.0.tgz#6ebfe1e73e165a517a727de4fbebcf096e7d10d8"
+  integrity sha512-qaESuELcLmAP4YQx4U0BW+TAILoQ7adWuEvRlSkI7XUwvjRw/XlgchJfRjLjNvqSLP/m8XcrOIJl18Nu++QA2w==
+  dependencies:
+    passport-oauth2 "~1.6.1"
+    pkginfo "~0.3.0"
+
+passport-kakao@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/passport-kakao/-/passport-kakao-1.0.1.tgz#e0593558afc0aa6244fc298be676b259f62b5e7a"
+  integrity sha512-uItaYRVrTHL6iGPMnMZvPa/O1GrAdh/V6EMjOHcFlQcVroZ9wgG7BZ5PonMNJCxfHQ3L2QVNRnzhKWUzSsumbw==
+  dependencies:
+    passport-oauth2 "~1.1.2"
+    pkginfo "~0.3.0"
+
+passport-naver-v2@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/passport-naver-v2/-/passport-naver-v2-2.0.8.tgz#db552aec4aa843bef7c18a10e871dc4431c1f918"
+  integrity sha512-CA0u+aA4K4Zf5e3dSd47agOS69ULOdBGei7CZY2BN1cEbLnhnc6OalFPvnXLuEKT8I4IuGwvh3EBZCST2FoI+A==
+  dependencies:
+    passport-oauth2 "^1.5.0"
+
+passport-oauth2@1.x.x, passport-oauth2@^1.5.0, passport-oauth2@~1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.6.1.tgz#c5aee8f849ce8bd436c7f81d904a3cd1666f181b"
   integrity sha512-ZbV43Hq9d/SBSYQ22GOiglFsjsD1YY/qdiptA+8ej+9C1dL1TVB+mBE5kDH/D4AJo50+2i8f4bx0vg4/yDDZCQ==
@@ -4569,6 +4638,15 @@ passport-oauth2@1.x.x:
     passport-strategy "1.x.x"
     uid2 "0.0.x"
     utils-merge "1.x.x"
+
+passport-oauth2@~1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/passport-oauth2/-/passport-oauth2-1.1.2.tgz#bd7163b1b6090371868dc4ef6f9f2e1e4cc4b948"
+  integrity sha512-wpsGtJDHHQUjyc9WcV9FFB0bphFExpmKtzkQrxpH1vnSr6RcWa3ZEGHx/zGKAh2PN7Po9TKYB1fJeOiIBspNPA==
+  dependencies:
+    oauth "0.9.x"
+    passport-strategy "1.x.x"
+    uid2 "0.0.x"
 
 passport-strategy@1.x.x, passport-strategy@^1.0.0:
   version "1.0.0"
@@ -4645,6 +4723,11 @@ pkg-dir@^4.2.0:
   integrity sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==
   dependencies:
     find-up "^4.0.0"
+
+pkginfo@~0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.3.1.tgz#5b29f6a81f70717142e09e765bbeab97b4f81e21"
+  integrity sha512-yO5feByMzAp96LtP58wvPKSbaKAi/1C4kV9XpTctr6EepnP6F33RBNOiVrdz9BrPA98U2BMFsTNHo44TWcbQ2A==
 
 pluralize@8.0.0:
   version "8.0.0"
