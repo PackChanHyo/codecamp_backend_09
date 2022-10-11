@@ -8,11 +8,16 @@ import { ProductsCategoriesModule } from './apis/productsCategories/productCateg
 import { UsersModule } from './apis/users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { PayMentsModule } from './apis/payments/payments.module';
+import { FilesModule } from './apis/files/files.module';
+import { ProductsImagesModule } from './apis/productsImages/productsImages.module';
+
 @Module({
   imports: [
     AuthModule,
     ProductsModule,
     PayMentsModule,
+    ProductsImagesModule,
+    FilesModule,
     ProductsCategoriesModule,
     UsersModule,
     ConfigModule.forRoot(),

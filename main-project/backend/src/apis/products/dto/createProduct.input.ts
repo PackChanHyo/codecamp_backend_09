@@ -1,6 +1,7 @@
 import { Field, InputType, Int } from '@nestjs/graphql';
 import { Min } from 'class-validator';
 import { ProductCategoryInput } from 'src/apis/productsCategories/dto/productCategory.input';
+import { ProductsImagesInput } from 'src/apis/productsImages/dto/productsImages.input';
 import { ProductLocalInput } from 'src/apis/productsLocals/dto/productLocal.input';
 import { UserInput } from 'src/apis/users/dto/productUser.input';
 
@@ -22,9 +23,12 @@ export class CreateProductInput {
   @Field(() => ProductCategoryInput)
   productCategory: ProductCategoryInput;
 
+  // @Field(() => [ProductsImagesInput])
+  // productImage: ProductsImagesInput[];
+
   // @Field(() => UserInput)
   // userInput: UserInput;
 
-  @Field(() => [String])
+  @Field(() => [String], { nullable: true })
   productTags: string[];
 }

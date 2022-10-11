@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductCategory } from '../productsCategories/entities/productCategorie.entity';
+import { ProductImage } from '../productsImages/entities/productImage.entity';
 import { ProductLocal } from '../productsLocals/entities/productLocal.entity';
 import { ProductsTag } from '../productsTags/entities/productsTag.entity';
 import { User } from '../users/entities/user.entity';
@@ -13,6 +14,7 @@ import { ProductsService } from './products.service';
     TypeOrmModule.forFeature([
       Product,
       ProductLocal,
+      ProductImage,
       ProductCategory,
       User,
       ProductsTag,

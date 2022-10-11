@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ProductCategory } from '../productsCategories/entities/productCategorie.entity';
+import { ProductImage } from '../productsImages/entities/productImage.entity';
 import { ProductLocal } from '../productsLocals/entities/productLocal.entity';
 import { ProductsTag } from '../productsTags/entities/productsTag.entity';
 import { User } from '../users/entities/user.entity';
@@ -46,6 +47,7 @@ export class ProductsService {
   async create({ createProductInput }) {
     const { productLocal, productCategory, productTags, ...product } =
       createProductInput;
+
     const result = await this.productLocalRepository.save({
       ...productLocal,
     });
@@ -53,6 +55,7 @@ export class ProductsService {
     const result2 = await this.productCategoryRepository.save({
       ...productCategory,
     });
+
     const temp = [];
     for (let i = 0; i < productTags.length; i++) {
       const tagname = productTags[i].replace('#', '');
@@ -69,6 +72,7 @@ export class ProductsService {
         temp.push(newTag);
       }
     }
+
     // const result3 = await this.userRepository.save({
     //   ...user,
     // });
@@ -79,6 +83,27 @@ export class ProductsService {
       productsTags: temp,
       // user: result3,
     });
+    console.log('|||', result4);
+
+    // const aaa = [];
+    // for (let i = 0; i < productImage.length; i++) {
+    //   aaa.push(productImage[i]);
+    //   await this.productImageRepository.save({
+    //     url: productImage[i],
+    //     mainImg: productImage[0],
+    //     product: result4.id,
+    //   });
+
+    // await Promise.all(
+    //   productImage.map(async (el) => {
+    //     await this.productImageRepository.save({
+    //       url: el,
+    //       mainImg: productImage[0],
+    //       product: result4.id,
+    //     }); //
+    //   }),
+    // );
+
     console.log(temp);
     return result4;
   }
@@ -107,6 +132,9 @@ export class ProductsService {
     const result = await this.productsRepository.softDelete({ id: productId });
     return result.affected ? true : false;
   }
+  // async Delete({ productId, url }) {
+  //   await this.productImageRepository.delete({ productId });
+  // }
 
   async restore({ productId }) {
     const result = await this.productsRepository.restore({ id: productId });
