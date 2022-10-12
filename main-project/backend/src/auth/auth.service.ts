@@ -31,6 +31,10 @@ export class AuthService {
     );
   }
 
+  async myLogout({ req }) {
+    //
+  }
+
   async mySocialLogin({ req, res }) {
     // 1. 회원 조회
     let user = await this.userService.findOne({ email: req.user.email });

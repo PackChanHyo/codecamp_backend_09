@@ -4,17 +4,24 @@ import { UpdateUserInput } from './entities/updateUser.input';
 import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
 import * as bcrypt from 'bcrypt';
-import { UseGuards } from '@nestjs/common';
-import { GqlAuthAccessGuard } from 'src/commons/auth/gql-auth.guard';
+import { CACHE_MANAGER, Inject, UseGuards } from '@nestjs/common';
+import {
+  GqlAuthAccessGuard,
+  GqlAuthRefreshGuard,
+} from 'src/commons/auth/gql-auth.guard';
 import { CurrentUser } from 'src/commons/auth/gql-user.param';
-
+import { Cache } from 'cache-manager';
 @Resolver()
 export class UsersResolver {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    @Inject(CACHE_MANAGER)
+    private readonly cacheManager: Cache,
+  ) {}
 
   @UseGuards(GqlAuthAccessGuard)
   @Query(() => [User])
-  fetchUsers() {
+  async fetchUsers() {
     return this.usersService.findAll();
   }
 

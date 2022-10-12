@@ -26,11 +26,11 @@ exports.ThumbnailTrigger = async (event, context) => {
   ];
 
   // 한개의 사이즈를 지정할 경우
-  // storage 의 파일 이름(event.name)을 가지고 오고 (createReadStream: stream으로 바꿔 읽는다.)
+  // storage 의 파일 이름(event.name)을 가지고 오고 (createReadStream: 기존의 파일을 읽어오기)
   // 그리고 pipe안에 sharp 라이브러리로 사이즈를 조정해주고,
   // 조정한 사이즈를 pipe를 이용해 저장된 storage에 써준다??(저장해준다??)
 
-  //   new Promise((resolve, reject) => {
+  //  await new Promise((resolve, reject) => {
   // storage
   //   .file(fileName)
   //   .createReadStream()
@@ -44,7 +44,7 @@ exports.ThumbnailTrigger = async (event, context) => {
 
   // 3개의 사이즈를 promise.all로 묶는다.
   // 각각의 사이즈를 지정하기 위해 위에 만들어진 sizes에 담긴 객체를 한번씩 돌리고
-  // 한개 만들때와 똑같이 파일 이름(event.name)을 가지고 오고,(createReadStream: stream으로 바꿔 읽는다.)
+  // 한개 만들때와 똑같이 파일 이름(event.name)을 가지고 오고,(createReadStream: 기존의 파일을 읽어오기)
   //그리고 이번에는 각각의 사이즈에 맞게 넣어야 하니 el.(키값) : 320 를 넣고 밑에는 주소를 넣어야하니
   // 주소에는 el.(values): s,m,l 를 넣어 각각의 크기와 주소에 맞게 적용시킨다.
 

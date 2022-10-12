@@ -1,8 +1,13 @@
+import { CACHE_MANAGER, Inject, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
+import { Cache } from 'cache-manager';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 
 export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
-  constructor() {
+  constructor(
+    @Inject(CACHE_MANAGER)
+    private readonly cacheManager: Cache,
+  ) {
     super({
       //   jwtFromRequest: (req) => {
       //     const temp = req.headers.authorization;
@@ -16,11 +21,21 @@ export class JwtRefreshStrategy extends PassportStrategy(Strategy, 'refresh') {
         return refreshToken;
       },
       secretOrKey: 'myRefreshKey',
+      passReqToCallback: true,
     });
   }
 
-  validate(payload) {
+  async validate(req, payload) {
+    const refresh = req.headers['cookie'].replace('refreshToken=', '');
+    const cache = await this.cacheManager.get(`refreshToken:${refresh}`);
+
+    console.log(refresh);
+    console.log(cache);
+    console.log('==================');
     console.log(payload); // {email: a@a.com, sub: asdqwd13d1-dad}
+    if (cache !== null) {
+      throw new UnauthorizedException('로그아웃된 계정입니다.');
+    }
     return {
       email: payload.email,
       id: payload.sub,
